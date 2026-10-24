@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b7hfvkq31xel4"]
+
+[ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="1_esqlh"]
+[ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="2_sqwcv"]
+[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base.tscn" id="3_sqwcv"]
+[ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/apple.tscn" id="4_ogn4w"]
+
+[node name="TestZone" type="Node2D" unique_id=1308950749]
+y_sort_enabled = true
+
+[node name="Monster" parent="." unique_id=968476936 instance=ExtResource("1_esqlh")]
+position = Vector2(150, 176)
+
+[node name="Player" parent="." unique_id=45304273 instance=ExtResource("2_sqwcv")]
+position = Vector2(320, 350)
+
+[node name="FoodBase" parent="." unique_id=1670747316 instance=ExtResource("3_sqwcv")]
+position = Vector2(458, 130)
+
+[node name="FoodBase2" parent="." unique_id=115554169 instance=ExtResource("3_sqwcv")]
+position = Vector2(536, 299)
+
+[node name="FoodBase3" parent="." unique_id=1391419815 instance=ExtResource("3_sqwcv")]
+position = Vector2(34, 269)
+
+[node name="Apple" parent="." unique_id=927962565 instance=ExtResource("4_ogn4w")]
+position = Vector2(438, 214)

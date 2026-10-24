@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://brfrwlwo4clc"]
+
+[ext_resource type="Script" uid="uid://by8k13u62lq1q" path="res://monster/monster.gd" id="1_2k2s0"]
+[ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_s3gyj"]
+[ext_resource type="Script" uid="uid://ijjfn4vlhiwq" path="res://global_resources/scripts/interactable_component.gd" id="2_gsx7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(118, 45)
+
+[node name="Monster" type="CharacterBody2D" unique_id=968476936]
+y_sort_enabled = true
+script = ExtResource("1_2k2s0")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=370451372]
+position = Vector2(0, -67.99999)
+scale = Vector2(0.921875, 1.0390625)
+texture = ExtResource("1_s3gyj")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1071050122]
+position = Vector2(0, -23.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=220176934 node_paths=PackedStringArray("body", "interaction_visual")]
+script = ExtResource("2_gsx7y")
+body = NodePath("..")
+interaction_range = 60.0
+interaction_visual = NodePath("../Label")
+metadata/_custom_type_script = "uid://ijjfn4vlhiwq"
+
+[node name="Label" type="Label" parent="." unique_id=1667123197]
+offset_left = -47.0
+offset_top = -166.0
+offset_right = 48.0
+offset_bottom = -143.0
+text = "E to Interact"
