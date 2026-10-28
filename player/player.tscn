@@ -2,33 +2,39 @@
 
 [ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bsxt1y8brpyya" path="res://player/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://bvbdfwucf3jb3" path="res://player/stack.gd" id="3_g1dw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(22, 9.5)
+size = Vector2(26, 10.75)
 
 [node name="Player" type="CharacterBody2D" unique_id=45304273 groups=["player"]]
-y_sort_enabled = true
 script = ExtResource("1_onrkg")
-base_move_speed = 4000.0
-acceleration = 0.85
+base_move_speed = 3300.0
+acceleration = 0.83
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2125349833]
-modulate = Color(1, 0.19999999, 0.19999999, 1)
+modulate = Color(0.25333327, 0.19999999, 1, 1)
 position = Vector2(0, -27)
 scale = Vector2(0.20312501, 0.4130209)
 texture = ExtResource("1_4flbx")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1264285966]
-position = Vector2(0, -7)
+position = Vector2(0, -6.375)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Bowl" type="Node2D" parent="." unique_id=740994939]
+position = Vector2(-19, -16)
 
-[node name="Sprite" type="Sprite2D" parent="Bowl" unique_id=1574650510]
-modulate = Color(0.4, 0.29426667, 0.156, 1)
-position = Vector2(0, -52)
-scale = Vector2(0.23437499, 0.078125)
+[node name="Sprite" type="Sprite2D" parent="Bowl" unique_id=875417230]
+modulate = Color(0.66, 0.37136, 0.11880001, 1)
+position = Vector2(0, -9.000004)
+scale = Vector2(0.328125, 0.12499999)
 texture = ExtResource("1_4flbx")
+
+[node name="Stack" type="Marker2D" parent="Bowl" unique_id=2124864887]
+y_sort_enabled = true
+position = Vector2(0, -15)
+script = ExtResource("3_g1dw6")
 
 [node name="Label" type="Label" parent="." unique_id=1561314609]
 offset_left = -177.0
@@ -36,3 +42,8 @@ offset_top = -89.0
 offset_right = 171.0
 offset_bottom = -66.0
 horizontal_alignment = 1
+
+[node name="Camera" type="Camera2D" parent="." unique_id=2072152576]
+offset = Vector2(0, -50)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

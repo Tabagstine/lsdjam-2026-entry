@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bymjuhgd6ey74"]
+
+[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base/food_base.tscn" id="1_t15cs"]
+
+[node name="Kiwi" unique_id=1670747316 node_paths=PackedStringArray("stack_sprite") instance=ExtResource("1_t15cs")]
+food_name = "kiwi"
+stack_sprite = NodePath("Sprite")
+
+[node name="Sprite" parent="." index="0" unique_id=2085850902]
+modulate = Color(0, 1, 0.083333254, 1)

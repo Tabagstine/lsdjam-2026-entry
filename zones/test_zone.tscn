@@ -2,26 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="1_esqlh"]
 [ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="2_sqwcv"]
-[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base.tscn" id="3_sqwcv"]
-[ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/apple.tscn" id="4_ogn4w"]
+[ext_resource type="PackedScene" uid="uid://bymjuhgd6ey74" path="res://food/foods/kiwi.tscn" id="4_2t3pr"]
+[ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/foods/apple.tscn" id="4_ogn4w"]
+[ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="5_2t3pr"]
 
 [node name="TestZone" type="Node2D" unique_id=1308950749]
 y_sort_enabled = true
 
-[node name="Monster" parent="." unique_id=968476936 instance=ExtResource("1_esqlh")]
-position = Vector2(150, 176)
+[node name="Apple4" parent="." unique_id=1926744622 instance=ExtResource("4_ogn4w")]
+position = Vector2(691, 263)
+
+[node name="Apple5" parent="." unique_id=1725076202 instance=ExtResource("4_ogn4w")]
+position = Vector2(434, 236)
 
 [node name="Player" parent="." unique_id=45304273 instance=ExtResource("2_sqwcv")]
 position = Vector2(320, 350)
 
-[node name="FoodBase" parent="." unique_id=1670747316 instance=ExtResource("3_sqwcv")]
-position = Vector2(458, 130)
+[node name="Monster" parent="." unique_id=968476936 instance=ExtResource("1_esqlh")]
+position = Vector2(150, 176)
 
-[node name="FoodBase2" parent="." unique_id=115554169 instance=ExtResource("3_sqwcv")]
-position = Vector2(536, 299)
+[node name="Kiwi4" parent="." unique_id=1729386149 instance=ExtResource("4_2t3pr")]
+position = Vector2(80, 269)
 
-[node name="FoodBase3" parent="." unique_id=1391419815 instance=ExtResource("3_sqwcv")]
-position = Vector2(34, 269)
+[node name="Kiwi2" parent="." unique_id=234959472 instance=ExtResource("4_2t3pr")]
+position = Vector2(510, 365)
 
-[node name="Apple" parent="." unique_id=927962565 instance=ExtResource("4_ogn4w")]
-position = Vector2(438, 214)
+[node name="Kiwi3" parent="." unique_id=301203381 instance=ExtResource("4_2t3pr")]
+position = Vector2(341, 105)
+
+[node name="KitchenCounter" parent="." unique_id=1330311833 instance=ExtResource("5_2t3pr")]
+position = Vector2(-52, 377)

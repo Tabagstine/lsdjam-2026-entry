@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d0dym8f872a4w"]
+
+[ext_resource type="Script" uid="uid://01gn1tqb2o18" path="res://food_stack_display.gd" id="1_nve2f"]
+
+[node name="IngredientStackDisplay" type="Node2D" unique_id=527567621]
+script = ExtResource("1_nve2f")

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://l5wj15ypwfhv"]
+
+[ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_waaqv"]
+[ext_resource type="Script" uid="uid://ci1q3h63u2v2j" path="res://kitchen/kitchen_counter.gd" id="1_ywuvc"]
+[ext_resource type="Script" uid="uid://ijjfn4vlhiwq" path="res://global_resources/scripts/interactable_component.gd" id="2_aqlju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqlju"]
+size = Vector2(234, 13)
+
+[node name="KitchenCounter" type="StaticBody2D" unique_id=1330311833]
+script = ExtResource("1_ywuvc")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1540552350]
+position = Vector2(0, -23.499998)
+scale = Vector2(1.875, 0.35156253)
+texture = ExtResource("1_waaqv")
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1286525900]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_aqlju")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=218787429 node_paths=PackedStringArray("body", "interaction_visual")]
+script = ExtResource("2_aqlju")
+debug = true
+body = NodePath("..")
+interaction_range = 50.0
+interaction_visual = NodePath("../Label")
+metadata/_custom_type_script = "uid://ijjfn4vlhiwq"
+
+[node name="Label" type="Label" parent="." unique_id=1654382848]
+offset_left = -47.0
+offset_top = -78.0
+offset_right = 48.0
+offset_bottom = -55.0
+text = "E to Interact"

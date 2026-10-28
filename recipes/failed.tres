@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Recipe" format=3 uid="uid://bw05drfe1h5eg"]
+
+[ext_resource type="Script" uid="uid://lueggdlh80m5" path="res://recipes/recipe.gd" id="1_irpdp"]
+
+[resource]
+script = ExtResource("1_irpdp")
+recipe_name = "failed"
+metadata/_custom_type_script = "uid://lueggdlh80m5"
