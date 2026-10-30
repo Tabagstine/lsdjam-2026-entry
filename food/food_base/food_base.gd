@@ -7,7 +7,7 @@ class_name Food
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
 @onready var player: Player =get_tree().get_first_node_in_group("player")
-var ingredient_display=preload("res://food/food_stack/ingredient_stack_display.tscn")
+var ingredient_display=preload("res://food/food_stack/stacked_ingredient.tscn")
 
 func _process(_delta: float) -> void:
 	interactable_component.interacted=Input.is_action_just_pressed("interact")

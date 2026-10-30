@@ -10,7 +10,6 @@ func _process(_delta: float) -> void:
 func interacted():
 	var attempted_food:Recipe=Globals.get_food_result()
 	if attempted_food.recipe_name!="failed":
-		for i in player.food_stack_order.size():
-			var recent_food:String=player.food_stack_order[player.food_stack_order.size()-1]
-			Globals.remove_food_from_stack(recent_food)
-		Globals.add_food_to_stack(attempted_food.recipe_name)
+		for i in player.get_food_stack_array().size():
+			player.stack.remove_child(player.stack.get_child(0))
+		Globals.add_food_to_stack(attempted_food.recipe_name,1)

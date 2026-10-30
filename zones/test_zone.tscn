@@ -9,11 +9,11 @@
 [node name="TestZone" type="Node2D" unique_id=1308950749]
 y_sort_enabled = true
 
-[node name="Apple4" parent="." unique_id=1926744622 instance=ExtResource("4_ogn4w")]
-position = Vector2(691, 263)
-
 [node name="Apple5" parent="." unique_id=1725076202 instance=ExtResource("4_ogn4w")]
 position = Vector2(434, 236)
+
+[node name="Apple6" parent="." unique_id=1670747316 instance=ExtResource("4_ogn4w")]
+position = Vector2(507, 268)
 
 [node name="Player" parent="." unique_id=45304273 instance=ExtResource("2_sqwcv")]
 position = Vector2(320, 350)
@@ -22,13 +22,16 @@ position = Vector2(320, 350)
 position = Vector2(150, 176)
 
 [node name="Kiwi4" parent="." unique_id=1729386149 instance=ExtResource("4_2t3pr")]
-position = Vector2(80, 269)
+position = Vector2(497, 211)
 
 [node name="Kiwi2" parent="." unique_id=234959472 instance=ExtResource("4_2t3pr")]
-position = Vector2(510, 365)
+position = Vector2(560, 236)
+
+[node name="Kiwi5" parent="." unique_id=826178151 instance=ExtResource("4_2t3pr")]
+position = Vector2(609, 269)
 
 [node name="Kiwi3" parent="." unique_id=301203381 instance=ExtResource("4_2t3pr")]
-position = Vector2(341, 105)
+position = Vector2(428, 185)
 
 [node name="KitchenCounter" parent="." unique_id=1330311833 instance=ExtResource("5_2t3pr")]
 position = Vector2(-52, 377)
