@@ -12,6 +12,5 @@ func interacted():
 	if player.get_food_stack_array().has(requested_food):
 		for i in player.get_stacked_ingredients().size():
 			if player.get_stacked_ingredients()[i].food_name==requested_food:
-				var eaten_food:StackedIngredient=player.get_stacked_ingredients()[i]
 				Globals.remove_specific_food_from_stack(requested_food)
 				break

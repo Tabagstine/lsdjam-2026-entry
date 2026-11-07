@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bocb5t3o5y6pd"]
+
+[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base/food_base.tscn" id="1_gehyi"]
+
+[node name="FruitSalad" unique_id=1670747316 node_paths=PackedStringArray("stack_sprite") instance=ExtResource("1_gehyi")]
+food_name = "kiwis"
+stack_sprite = NodePath("Sprite")
+weight = 2.0
+
+[node name="Sprite" parent="." index="0" unique_id=2085850902]
+modulate = Color(0.35400003, 1, 0.32, 1)
+position = Vector2(0, -38)
+scale = Vector2(0.265625, 0.59375)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://kv7eudsokva"]
+
+[ext_resource type="Script" uid="uid://bngl6yflvkwgh" path="res://interface/hud/hud.gd" id="1_kni60"]
+[ext_resource type="PackedScene" uid="uid://dhels06fl6x8k" path="res://interface/inventory/inventory.tscn" id="2_ngtag"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1512505587 groups=["hud"]]
+process_mode = 3
+script = ExtResource("1_kni60")
+
+[node name="TimeDisplay" type="Label" parent="." unique_id=1246372531]
+offset_left = 214.0
+offset_right = 434.0
+offset_bottom = 23.0
+text = "TIME"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventory" parent="." unique_id=831494465 instance=ExtResource("2_ngtag")]

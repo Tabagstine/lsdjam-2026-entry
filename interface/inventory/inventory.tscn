@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dhels06fl6x8k"]
+
+[ext_resource type="Script" uid="uid://c4vu7qnvm857m" path="res://interface/inventory/inventory.gd" id="1_ck6io"]
+[ext_resource type="PackedScene" uid="uid://snmeg51v2b42" path="res://interface/inventory/inventory_button.tscn" id="2_g14jo"]
+
+[node name="Inventory" type="CanvasLayer" unique_id=831494465]
+process_mode = 3
+script = ExtResource("1_ck6io")
+inventory_button = ExtResource("2_g14jo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=190417245]
+offset_left = 14.0
+offset_top = 70.0
+offset_right = 192.0
+offset_bottom = 326.0
+color = Color(0.6, 0.87333333, 1, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=353636581]
+offset_left = 14.0
+offset_top = 23.0
+offset_right = 192.0
+offset_bottom = 61.0
+color = Color(0.6, 0.87333333, 1, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=1270401655]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 7.0
+offset_right = 173.0
+offset_bottom = 30.0
+text = "THIS IS A TEXT 1"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1855978048]
+offset_left = 18.0
+offset_top = 73.0
+offset_right = 190.0
+offset_bottom = 324.0
+horizontal_scroll_mode = 3
+
+[node name="ButtonsContainer" type="GridContainer" parent="ScrollContainer" unique_id=761491292]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3

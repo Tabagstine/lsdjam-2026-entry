@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_waaqv"]
 [ext_resource type="Script" uid="uid://ci1q3h63u2v2j" path="res://kitchen/kitchen_counter.gd" id="1_ywuvc"]
 [ext_resource type="Script" uid="uid://ijjfn4vlhiwq" path="res://global_resources/scripts/interactable_component.gd" id="2_aqlju"]
+[ext_resource type="PackedScene" uid="uid://bialv1bjw26qr" path="res://minigames/scenes/test_minigame.tscn" id="2_yqwae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqlju"]
 size = Vector2(234, 13)
 
 [node name="KitchenCounter" type="StaticBody2D" unique_id=1330311833]
 script = ExtResource("1_ywuvc")
+defualt_minigame = ExtResource("2_yqwae")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1540552350]
 position = Vector2(0, -23.499998)

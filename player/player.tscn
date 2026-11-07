@@ -32,11 +32,14 @@ scale = Vector2(0.328125, 0.12499999)
 texture = ExtResource("1_4flbx")
 
 [node name="Stack" type="Marker2D" parent="Bowl" unique_id=2124864887]
+process_mode = 3
 y_sort_enabled = true
 position = Vector2(0, -15)
+gizmo_extents = 5.0
 script = ExtResource("3_g1dw6")
 
 [node name="Label" type="Label" parent="." unique_id=1561314609]
+top_level = true
 offset_left = -177.0
 offset_top = -89.0
 offset_right = 171.0
@@ -45,5 +48,6 @@ horizontal_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="." unique_id=2072152576]
 offset = Vector2(0, -50)
+zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

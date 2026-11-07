@@ -8,10 +8,9 @@ class_name Player
 @onready var stack: Node2D = $Bowl/Stack
 @onready var bowl_start_pos: Vector2 = $Bowl.position
 var move_direction: Vector2
+var interactables_in_range: Array[Node2D]
 
 func _physics_process(delta: float) -> void:	
-	if Input.is_action_just_pressed("debug_action"):
-		Globals.add_food_to_stack("fruit_salad",1)
 	bowl.position.x=lerpf(bowl.position.x,signf(move_direction.x)*30,delta*10)
 	bowl.rotation=lerpf(bowl.rotation,signf(move_direction.x)/10,delta*10)
 	bowl.position.y=lerpf(bowl.position.y,bowl_start_pos.y,delta*15)
@@ -37,13 +36,19 @@ func get_food_stack_array():
 	for i in stack.get_child_count():
 		food_stack.insert(i,get_stacked_ingredients()[i].food_name)
 	return food_stack
-	print(food_stack)
 func get_stacked_ingredients():
 	var stacked_ingredients: Array[StackedIngredient]
 	for i in stack.get_child_count():
 		if stack.get_child(i).is_in_group("stacked_ingredient"):
 			var iterated_child: StackedIngredient = stack.get_child(i)
 			stacked_ingredients.insert(0,iterated_child)
-	if stacked_ingredients.size()>0:
-		print(stacked_ingredients[0].food_name)
 	return stacked_ingredients
+func get_closest_interactable():
+	if interactables_in_range.size()>0:
+		var closest_item=interactables_in_range[0]
+		for i in interactables_in_range.size():
+			if interactables_in_range[i].position.distance_to(position)<closest_item.position.distance_to(position):
+				closest_item=interactables_in_range[i]
+		return closest_item
+	else:
+		return
