@@ -3,6 +3,7 @@ var time_left: float = 300
 var time_paused: bool = false
 var possible_recipes: Array[Recipe]
 @onready var hud=get_tree().get_first_node_in_group("hud")
+@onready var map_size=get_tree().get_first_node_in_group("zone").map_size
 
 func _ready():
 	process_mode=Node.PROCESS_MODE_ALWAYS

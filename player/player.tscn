@@ -44,10 +44,11 @@ offset_left = -177.0
 offset_top = -89.0
 offset_right = 171.0
 offset_bottom = -66.0
+text = "hi poop"
 horizontal_alignment = 1
 
 [node name="Camera" type="Camera2D" parent="." unique_id=2072152576]
 offset = Vector2(0, -50)
-zoom = Vector2(0.1, 0.1)
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0

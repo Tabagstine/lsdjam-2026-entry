@@ -39,6 +39,7 @@ player=""
 stacked_ingredient=""
 hud=""
 minigame=""
+zone=""
 
 [input]
 

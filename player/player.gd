@@ -7,10 +7,20 @@ class_name Player
 @onready var bowl: Node2D = $Bowl
 @onready var stack: Node2D = $Bowl/Stack
 @onready var bowl_start_pos: Vector2 = $Bowl.position
+@onready var camera: Camera2D = $Camera
+@onready var terrain:TileMapLayer=get_tree().get_first_node_in_group("zone").find_child("TerrainTiles")
+
 var move_direction: Vector2
 var interactables_in_range: Array[Node2D]
 
-func _physics_process(delta: float) -> void:	
+func _ready() -> void:
+	camera.limit_left=0
+	camera.limit_right=Globals.map_size.x*32
+	camera.limit_top=50
+	camera.limit_bottom=Globals.map_size.y*33
+	
+func _physics_process(delta: float) -> void:
+	terrain.set_cell(position,0,Vector2i(2,0))
 	bowl.position.x=lerpf(bowl.position.x,signf(move_direction.x)*30,delta*10)
 	bowl.rotation=lerpf(bowl.rotation,signf(move_direction.x)/10,delta*10)
 	bowl.position.y=lerpf(bowl.position.y,bowl_start_pos.y,delta*15)
