@@ -17,10 +17,10 @@ func _ready() -> void:
 	camera.limit_left=0
 	camera.limit_right=Globals.map_size.x*32
 	camera.limit_top=50
-	camera.limit_bottom=Globals.map_size.y*33
+	camera.limit_bottom=Globals.map_size.y*32
 	
 func _physics_process(delta: float) -> void:
-	terrain.set_cell(position,0,Vector2i(2,0))
+	$Label.text=str(get_stepped_tile_type())
 	bowl.position.x=lerpf(bowl.position.x,signf(move_direction.x)*30,delta*10)
 	bowl.rotation=lerpf(bowl.rotation,signf(move_direction.x)/10,delta*10)
 	bowl.position.y=lerpf(bowl.position.y,bowl_start_pos.y,delta*15)
@@ -62,3 +62,5 @@ func get_closest_interactable():
 		return closest_item
 	else:
 		return
+func get_stepped_tile_type():
+	return terrain.get_cell_tile_data(terrain.local_to_map(position)).get_custom_data("Tile Type")

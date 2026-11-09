@@ -1,20 +1,21 @@
 [gd_scene format=3 uid="uid://b7hfvkq31xel4"]
 
 [ext_resource type="Script" uid="uid://bw0naemlkmxnv" path="res://zones/test_zone.gd" id="1_lbvvm"]
-[ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="2_sqwcv"]
+[ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="2_ogn4w"]
+[ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="3_ogn4w"]
 [ext_resource type="Texture2D" uid="uid://rlyv3wyn0tgb" path="res://zones/basic_tiles.png" id="3_sqwcv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2t3pr"]
 noise_type = 3
-frequency = 0.0294
-fractal_octaves = 1
-fractal_gain = 1.0
-fractal_weighted_strength = 1.0
+frequency = 0.0237
+fractal_octaves = 3
+fractal_lacunarity = 1.0
 domain_warp_type = 1
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_sqwcv"]
 noise_type = 3
-frequency = 0.0081
+frequency = 0.0206
+fractal_type = 0
 fractal_gain = 0.1
 fractal_weighted_strength = 1.0
 
@@ -23,24 +24,85 @@ texture = ExtResource("3_sqwcv")
 separation = Vector2i(1, 0)
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = "Grass"
+0:0/0/custom_data_1 = "Forest"
 1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 1
+1:0/0/terrains_peering_bit/right_side = 1
+1:0/0/terrains_peering_bit/bottom_right_corner = 1
+1:0/0/terrains_peering_bit/bottom_side = 1
+1:0/0/terrains_peering_bit/bottom_left_corner = 1
+1:0/0/terrains_peering_bit/left_side = 1
+1:0/0/terrains_peering_bit/top_left_corner = 1
+1:0/0/terrains_peering_bit/top_side = 1
+1:0/0/terrains_peering_bit/top_right_corner = 1
+1:0/0/custom_data_0 = "Grass"
+1:0/0/custom_data_1 = "Plains"
 2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/terrains_peering_bit/right_side = 2
+2:0/0/terrains_peering_bit/bottom_right_corner = 2
+2:0/0/terrains_peering_bit/bottom_side = 2
+2:0/0/terrains_peering_bit/bottom_left_corner = 2
+2:0/0/terrains_peering_bit/left_side = 2
+2:0/0/terrains_peering_bit/top_left_corner = 2
+2:0/0/terrains_peering_bit/top_side = 2
+2:0/0/terrains_peering_bit/top_right_corner = 2
+2:0/0/custom_data_0 = "Sand"
+2:0/0/custom_data_1 = "General"
 3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 3
+3:0/0/terrains_peering_bit/right_side = 3
+3:0/0/terrains_peering_bit/bottom_right_corner = 3
+3:0/0/terrains_peering_bit/bottom_side = 3
+3:0/0/terrains_peering_bit/bottom_left_corner = 3
+3:0/0/terrains_peering_bit/left_side = 3
+3:0/0/terrains_peering_bit/top_left_corner = 3
+3:0/0/terrains_peering_bit/top_side = 3
+3:0/0/terrains_peering_bit/top_right_corner = 3
+3:0/0/custom_data_0 = "Water"
+3:0/0/custom_data_1 = "General"
 
 [sub_resource type="TileSet" id="TileSet_esqlh"]
 tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "ForestGrass"
+terrain_set_0/terrain_0/color = Color(0.25, 0.5, 0.3, 1)
+terrain_set_0/terrain_1/name = "NormalGrass"
+terrain_set_0/terrain_1/color = Color(0.5, 1, 0.5083333, 1)
+terrain_set_0/terrain_2/name = "Sand"
+terrain_set_0/terrain_2/color = Color(0.94166666, 1, 0.5, 1)
+terrain_set_0/terrain_3/name = "Water"
+terrain_set_0/terrain_3/color = Color(0.5, 0.9666666, 1, 1)
+custom_data_layer_0/name = "Tile Type"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "Tile Biome"
+custom_data_layer_1/type = 4
 sources/0 = SubResource("TileSetAtlasSource_ogn4w")
 
 [node name="ZoneBase" type="Node2D" unique_id=1308950749 groups=["zone"]]
 y_sort_enabled = true
 script = ExtResource("1_lbvvm")
-map_size = Vector2(200, 50)
+map_size = Vector2(200, 90)
+sand_amount = 0.04
 terrain_scale = 40.0
 terrain_noise = SubResource("FastNoiseLite_2t3pr")
 biome_noise = SubResource("FastNoiseLite_sqwcv")
-
-[node name="Player" parent="." unique_id=45304273 instance=ExtResource("2_sqwcv")]
-position = Vector2(936, 633)
+kitchen_counter = ExtResource("2_ogn4w")
+monster = ExtResource("3_ogn4w")
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=1801103313]
 tile_set = SubResource("TileSet_esqlh")

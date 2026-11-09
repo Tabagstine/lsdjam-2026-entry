@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @export var inventory_button: PackedScene
 
-@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var buttons_container: GridContainer = $ScrollContainer/ButtonsContainer
 
 var inventory_shown: bool = false
@@ -17,9 +16,11 @@ func _process(_delta: float) -> void:
 	
 	if get_tree().get_node_count_in_group("player")>0:
 		display_hovered_item()
+		var player: Player = get_tree().get_first_node_in_group("player")
 		if buttons_container.get_child_count()!=player.get_food_stack_dictionary().keys().size():
 			update_inventory() 
 func update_inventory():
+	var player: Player = get_tree().get_first_node_in_group("player")
 	for i in buttons_container.get_child_count():
 		buttons_container.get_child(i).queue_free()
 	if player.get_food_stack_array().size()>0:
