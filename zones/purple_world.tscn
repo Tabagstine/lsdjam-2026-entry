@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ch3tm7svs0dt6"]
+
+[ext_resource type="PackedScene" uid="uid://b7hfvkq31xel4" path="res://zones/zone_base.tscn" id="1_tetp2"]
+[ext_resource type="Script" uid="uid://cslbirejba6da" path="res://biome_resource.gd" id="2_k7yo4"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i2n25"]
+noise_type = 3
+frequency = 0.03
+fractal_octaves = 3
+fractal_lacunarity = 1.0
+domain_warp_type = 1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fakfs"]
+frequency = 0.0109
+fractal_octaves = 2
+fractal_gain = 1.0
+fractal_weighted_strength = 1.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_13bvk"]
+noise_type = 0
+frequency = 0.0106
+fractal_octaves = 2
+fractal_gain = 5.0
+fractal_weighted_strength = 0.38
+
+[sub_resource type="Resource" id="Resource_fgku8"]
+script = ExtResource("2_k7yo4")
+biome_name = &"Desert"
+temperature_value = 0.3500000000000001
+moisture_requirement = "number_is_less_than"
+moisture_value = -0.19999999999999996
+metadata/_custom_type_script = "uid://cslbirejba6da"
+
+[sub_resource type="Resource" id="Resource_g8qkk"]
+script = ExtResource("2_k7yo4")
+biome_name = &"Forest"
+temperature_requirement = "number_is_less_than"
+temperature_value = 0.1499999999999999
+moisture_value = 0.05000000000000004
+metadata/_custom_type_script = "uid://cslbirejba6da"
+
+[node name="PurpleWorld" unique_id=1308950749 instance=ExtResource("1_tetp2")]
+sea_level = -0.04999999999999999
+noises = Dictionary[StringName, FastNoiseLite]({
+&"elevation": SubResource("FastNoiseLite_i2n25"),
+&"moisture": SubResource("FastNoiseLite_fakfs"),
+&"temperature": SubResource("FastNoiseLite_13bvk")
+})
+biomes = Array[ExtResource("2_k7yo4")]([SubResource("Resource_fgku8"), SubResource("Resource_g8qkk")])

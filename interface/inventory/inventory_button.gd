@@ -2,15 +2,14 @@ extends TextureButton
 class_name InventoryButton
 
 @onready var amount: Label = $Amount
-@onready var player: Player = get_tree().get_first_node_in_group("player")
 
 var display_value: int = 0
 var food_name: String
 
 
 func _process(_delta: float) -> void:
-	if player.get_food_stack_dictionary().has(food_name):
-		display_value=player.get_food_stack_dictionary()[food_name]
+	if Globals.player.get_food_stack_dictionary().has(food_name):
+		display_value=Globals.player.get_food_stack_dictionary()[food_name]
 		amount.text=": "+str(display_value)
 	
 	var color_change_speed:=0.4

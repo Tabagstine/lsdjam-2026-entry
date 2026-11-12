@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 		queue_free()
 func minigame_complete():
 	queue_free()
-	var player: Player = get_tree().get_first_node_in_group("player")
-	for i in player.get_food_stack_array().size():
-		player.stack.remove_child(player.stack.get_child(0))
+	for i in Globals.player.get_food_stack_array().size():
+		Globals.player.stack.remove_child(Globals.player.stack.get_child(0))
 	Globals.add_food_to_stack(food_result,food_quality)

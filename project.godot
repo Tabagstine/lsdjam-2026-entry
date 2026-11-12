@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LSDJAM2026Entry"
-run/main_scene="uid://b7hfvkq31xel4"
+run/main_scene="uid://ch3tm7svs0dt6"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://placeholder/icon.svg"
 

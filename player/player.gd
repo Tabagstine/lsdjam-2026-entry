@@ -63,4 +63,7 @@ func get_closest_interactable():
 	else:
 		return
 func get_stepped_tile_type():
-	return terrain.get_cell_tile_data(terrain.local_to_map(position)).get_custom_data("Tile Type")
+	if terrain.get_cell_tile_data(terrain.local_to_map(position))!=null:
+		return terrain.get_cell_tile_data(terrain.local_to_map(position)).get_custom_data("Tile Type")
+	else:
+		return "Water"

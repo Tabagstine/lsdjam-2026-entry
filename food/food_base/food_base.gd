@@ -6,7 +6,6 @@ class_name Food
 @export var weight: float = 1
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
-@onready var player: Player =get_tree().get_first_node_in_group("player")
 var ingredient_display=preload("res://food/food_stack/stacked_ingredient.tscn")
 
 func _process(_delta: float) -> void:

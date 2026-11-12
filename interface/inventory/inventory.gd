@@ -16,20 +16,18 @@ func _process(_delta: float) -> void:
 	
 	if get_tree().get_node_count_in_group("player")>0:
 		display_hovered_item()
-		var player: Player = get_tree().get_first_node_in_group("player")
-		if buttons_container.get_child_count()!=player.get_food_stack_dictionary().keys().size():
+		if buttons_container.get_child_count()!=Globals.player.get_food_stack_dictionary().keys().size():
 			update_inventory() 
 func update_inventory():
-	var player: Player = get_tree().get_first_node_in_group("player")
 	for i in buttons_container.get_child_count():
 		buttons_container.get_child(i).queue_free()
-	if player.get_food_stack_array().size()>0:
-		for i in player.get_food_stack_dictionary().keys().size():
+	if Globals.player.get_food_stack_array().size()>0:
+		for i in Globals.player.get_food_stack_dictionary().keys().size():
 			var new_inventory_button: InventoryButton = inventory_button.instantiate()
-			var button_texture=Globals.get_food(player.get_food_stack_dictionary().keys()[i]).stack_sprite.texture
+			var button_texture=Globals.get_food(Globals.player.get_food_stack_dictionary().keys()[i]).stack_sprite.texture
 			new_inventory_button.texture_normal=button_texture
-			new_inventory_button.modulate=Globals.get_food(player.get_food_stack_dictionary().keys()[i]).stack_sprite.modulate
-			new_inventory_button.food_name=player.get_food_stack_dictionary().keys()[i]
+			new_inventory_button.modulate=Globals.get_food(Globals.player.get_food_stack_dictionary().keys()[i]).stack_sprite.modulate
+			new_inventory_button.food_name=Globals.player.get_food_stack_dictionary().keys()[i]
 			buttons_container.add_child(new_inventory_button)
 func display_hovered_item():
 	var displayed_item: String
