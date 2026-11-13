@@ -1,6 +1,8 @@
 extends Node2D
 class_name Zone
 
+##If disabled, the zone will be pre-made and NOT generated.
+@export var use_world_generation: bool = true
 @export_group("World Generation")
 ##How large the map will be in width and height
 @export var map_size:=Vector2(64,64)
@@ -26,8 +28,9 @@ func _process(_delta: float) -> void:
 	var tile_temperature=noises.temperature.get_noise_2d(local_to_map.x,local_to_map.y)
 	print("Moisture: "+str(tile_moisture)+" | Temperature: "+str(tile_temperature)+" | Biome: "+str(get_cell_biome(local_to_map.x,local_to_map.y)))
 func _ready() -> void:
-	generate_terrain()
-	add_post_terrain_items()
+	if use_world_generation:
+		generate_terrain()
+		add_post_terrain_items()
 func generate_terrain():
 	terrain_tiles.z_index=-4096
 	for i in noises.keys().size():

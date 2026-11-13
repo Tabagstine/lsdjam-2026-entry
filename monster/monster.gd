@@ -12,8 +12,10 @@ func interacted():
 		for i in Globals.player.get_stacked_ingredients().size():
 			if Globals.player.get_stacked_ingredients()[i].food_name==requested_food:
 				if Globals.player.get_stacked_ingredients()[i].food_quality>=0.5:
-					send_to_new_zone()
+					fed()
 				Globals.remove_specific_food_from_stack(requested_food)
 				break
 func send_to_new_zone():
 	get_tree().change_scene_to_file("res://zones/purple_world.tscn")
+func fed():
+	send_to_new_zone()
