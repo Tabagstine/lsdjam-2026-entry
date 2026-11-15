@@ -2,7 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bsxt1y8brpyya" path="res://player/player.gd" id="1_onrkg"]
+[ext_resource type="Shader" uid="uid://b4782vcdvrb6s" path="res://player/water_shader.gdshader" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://bvbdfwucf3jb3" path="res://player/stack.gd" id="3_g1dw6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7yo4"]
+shader = ExtResource("2_yw30f")
+shader_parameter/water_depth = 0.2
+shader_parameter/water_line_scale = 1.1
+shader_parameter/water_bob_scale = 4.0
+shader_parameter/water_bob_speed = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(26, 10.75)
@@ -14,11 +22,13 @@ acceleration = 0.83
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2125349833]
 modulate = Color(0.25333327, 0.19999999, 1, 1)
+material = SubResource("ShaderMaterial_k7yo4")
 position = Vector2(0, -27)
 scale = Vector2(0.20312501, 0.4130209)
 texture = ExtResource("1_4flbx")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1264285966]
+visible = false
 position = Vector2(0, -6.375)
 shape = SubResource("RectangleShape2D_g4v7s")
 
@@ -40,7 +50,7 @@ script = ExtResource("3_g1dw6")
 
 [node name="Camera" type="Camera2D" parent="." unique_id=2072152576]
 offset = Vector2(0, -50)
-zoom = Vector2(0.12, 0.12)
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
