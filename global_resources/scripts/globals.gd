@@ -1,10 +1,12 @@
 extends Node
+var global_script=self
 var time_left: float = 300
 var time_paused: bool = false
 var possible_recipes: Array[Recipe]
 var player: Player
 @onready var hud=get_tree().get_first_node_in_group("hud")
 @onready var map_size=get_tree().get_first_node_in_group("zone").map_size
+
 
 func _ready():
 	process_mode=Node.PROCESS_MODE_ALWAYS
@@ -68,3 +70,9 @@ func manage_pausing():
 	for i in hud.get_child_count():
 		if hud.get_child(i).is_in_group("minigame"):
 			get_tree().set_deferred("paused",true)
+func number_is_less_than(x,y):
+	return x<y
+func number_is_greater_than(x,y):
+	return x>y
+func number_is_equal_to(x,y):
+	return x==y

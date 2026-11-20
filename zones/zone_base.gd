@@ -15,8 +15,7 @@ class_name Zone
 @export var defualt_biome: StringName
 ##Changes the priorty for biomes. Items higher up override lower biomes.
 @export_group("Item Generation")
-@export var kitchen_counter: PackedScene = preload("res://kitchen/kitchen_counter.tscn")
-@export var monster: PackedScene = preload("res://monster/monster.tscn")
+@export var items_to_be_generated: Array[GeneratedItem]
 
 @onready var terrain_tiles: TileMapLayer = $TerrainTiles
 ##Items that have been generated get added to the array
@@ -30,7 +29,7 @@ func _process(_delta: float) -> void:
 func _ready() -> void:
 	if use_world_generation:
 		generate_terrain()
-		add_post_terrain_items()
+		generate_post_terrain_items()
 func generate_terrain():
 	terrain_tiles.z_index=-4096
 	for i in noises.keys().size():
@@ -50,37 +49,24 @@ func generate_terrain():
 			else:
 				#Water generation
 					terrain_tiles.set_cell(Vector2i(x,y),0,Vector2i(3,0))
-func add_post_terrain_items():
-	for x:int in map_size.x:
-		for y:int in map_size.y:
-			var elevation=noises.elevation.get_noise_2d(x,y)
-			var iterated_tile=terrain_tiles.get_cell_tile_data(Vector2i(x,y))
-			match iterated_tile.get_custom_data("Tile Type"):
-				"Grass":
-					if elevation>0.3 and x>map_size.x/3: #Player spawner
-						if !generated_items.has("Player"):
-							generated_items.append("Player")
-							var spawned_player: Player = load("res://player/player.tscn").instantiate()
-							spawned_player.position=Vector2(x,y)*32
-							add_child(spawned_player)
-					if elevation<0.3 and elevation>0.2 and x>map_size.x/2 and y>map_size.y/2: #Kitchen counter spawner
-						if !generated_items.has("KitchenCounter"):
-							print(Vector2(x,y))
-							generated_items.append("KitchenCounter")
-							var new_kitchen_counter=kitchen_counter.instantiate()
-							new_kitchen_counter.position=Vector2(x,y+1)*32
-							add_child(new_kitchen_counter)
-					if elevation>0.38: #Monster spawner
-						if !generated_items.has("Monster"):
-							generated_items.append("Monster")
-							var new_monster=monster.instantiate()
-							new_monster.position=Vector2(x,y)*32
-							add_child(new_monster)
-					if elevation>0.2 and randi_range(0,50)==0: #Temporary food spawning
-						if iterated_tile.get_custom_data("Tile Biome")=="Forest":
-							spawn_food("apple",Vector2(x,y+0.8)*32)
-						else:
-							spawn_food("kiwi",Vector2(x,y+0.8)*32)
+func generate_post_terrain_items():
+	for i in items_to_be_generated.size():
+		var current_item=items_to_be_generated[i]
+		for x: int in map_size.x:
+			for y: int in map_size.y:
+				var elevation=noises["elevation"].get_noise_2d(x,y)
+				var iterated_tile=terrain_tiles.get_cell_tile_data(Vector2i(x,y))
+				var elevation_requirement_call=Callable(Globals,current_item.elevation_requirement)
+				if elevation_requirement_call.call(elevation,current_item.elevation_value):
+					if generated_items.count(current_item)<current_item.maximum_amount:
+						generated_items.append(current_item)
+						var new_item=current_item.scene.instantiate()
+						new_item.position=Vector2(x,y)*32
+						add_child(new_item)
+		if generated_items.count(current_item)<current_item.minimum_amount:
+			print("minimum failed")
+		else:
+			print("minimum met")
 func spawn_food(food,spawn_position):	
 	var new_food:Food=load("res://food/foods/"+str(food)+".tscn").instantiate()
 	new_food.position=spawn_position
@@ -99,28 +85,12 @@ func get_cell_biome(cell_x,cell_y):
 func see_if_biome_requirement_met(biome_number:int,cell_x:int,cell_y:int):
 	var requirments_met: Array[String]
 	var given_biome=biomes[biome_number]
-	var requirement=Callable(self,given_biome.temperature_requirement)
+	var requirement=Callable(Globals,given_biome.temperature_requirement)
 	if requirement.call(noises.temperature.get_noise_2d(cell_x,cell_y),given_biome.temperature_value):
 		requirments_met.append("temperature")
-	requirement=Callable(self,given_biome.moisture_requirement)
+	requirement=Callable(Globals,given_biome.moisture_requirement)
 	if requirement.call(noises.moisture.get_noise_2d(cell_x,cell_y),given_biome.moisture_value):
 		requirments_met.append("moisture")
-	if requirments_met.has("temperature") and requirments_met.has("moisture"):
-		return true
-	else:
-		return false
-func number_is_less_than(x,y):
-	if x<y:
-		return true
-	else:
-		return false
-func number_is_greater_than(x,y):
-	if x>y:
-		return true
-	else:
-		return false
-func number_is_equal_to(x,y):
-	if x==y:
-		return true
-	else:
-		return false
+	return requirments_met.has("temperature") and requirments_met.has("moisture")
+func get_tallest_tile(biome):
+	pass

@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://b7hfvkq31xel4"]
 
 [ext_resource type="Script" uid="uid://bw0naemlkmxnv" path="res://zones/zone_base.gd" id="1_ofnxr"]
+[ext_resource type="Script" uid="uid://c4ypnurmqycwc" path="res://generated_item.gd" id="2_i6ywb"]
 [ext_resource type="Texture2D" uid="uid://rlyv3wyn0tgb" path="res://zones/basic_tiles.png" id="3_i6ywb"]
+[ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="3_ofnxr"]
+[ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="3_ouccu"]
+
+[sub_resource type="Resource" id="Resource_tyse7"]
+script = ExtResource("2_i6ywb")
+scene = ExtResource("3_ouccu")
+elevation_value = 0.2
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogn4w"]
 texture = ExtResource("3_i6ywb")
@@ -82,6 +91,10 @@ y_sort_enabled = true
 script = ExtResource("1_ofnxr")
 map_size = Vector2(150, 64)
 defualt_biome = &"Plains"
+items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tyse7")])
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=1801103313]
 tile_set = SubResource("TileSet_esqlh")
+
+[node name="Player" parent="." unique_id=45304273 instance=ExtResource("3_ofnxr")]
+position = Vector2(484, 197)

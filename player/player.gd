@@ -9,9 +9,12 @@ class_name Player
 @onready var bowl_start_pos: Vector2 = $Bowl.position
 @onready var camera: Camera2D = $Camera
 @onready var terrain:TileMapLayer=get_tree().get_first_node_in_group("zone").find_child("TerrainTiles")
+@onready var zone: Zone = get_tree().get_first_node_in_group("zone")
 
 var move_direction: Vector2
 var interactables_in_range: Array[Node2D]
+var water_depth: float = 0.1
+var speed_multiplier: float = 1
 
 func _ready() -> void:
 	camera.limit_left=0
@@ -21,6 +24,15 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	$Label.text=str(get_stepped_tile_type())
+	speed_multiplier=1
+	if get_stepped_tile_type()=="Water":
+		speed_multiplier=0.7
+		water_depth=lerpf(water_depth,0.25,0.5)
+	else:
+		water_depth=lerpf(water_depth,0,0.5)
+	var shader_material=preload("res://player/water_shader_material.tres")
+	shader_material.set_shader_parameter("water_depth",water_depth)
+	$Sprite.material=shader_material
 	bowl.position.x=lerpf(bowl.position.x,signf(move_direction.x)*30,delta*10)
 	bowl.rotation=lerpf(bowl.rotation,signf(move_direction.x)/10,delta*10)
 	bowl.position.y=lerpf(bowl.position.y,bowl_start_pos.y,delta*15)
@@ -30,7 +42,7 @@ func _physics_process(delta: float) -> void:
 			bowl.position.y+=4
 	
 	move_direction=Input.get_vector("move_left","move_right","move_up","move_down")
-	velocity+=move_direction*base_move_speed*delta
+	velocity+=move_direction*base_move_speed*speed_multiplier*delta
 	velocity*=acceleration
 	move_and_slide()
 func get_food_stack_dictionary():

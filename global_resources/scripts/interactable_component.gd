@@ -23,7 +23,6 @@ func tick():
 				can_interact=true
 			else:
 				can_interact=false
-				
 		interaction_visual.visible=can_interact
 		if can_interact and interacted:
 			if body.has_method("interacted"):
