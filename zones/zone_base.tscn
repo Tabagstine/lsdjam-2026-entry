@@ -5,11 +5,49 @@
 [ext_resource type="Texture2D" uid="uid://rlyv3wyn0tgb" path="res://zones/basic_tiles.png" id="3_i6ywb"]
 [ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="3_ofnxr"]
 [ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="3_ouccu"]
+[ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/foods/apple.tscn" id="4_ouccu"]
+[ext_resource type="PackedScene" uid="uid://bymjuhgd6ey74" path="res://food/foods/kiwi.tscn" id="5_tyse7"]
 
 [sub_resource type="Resource" id="Resource_tyse7"]
 script = ExtResource("2_i6ywb")
 scene = ExtResource("3_ouccu")
-elevation_value = 0.2
+tile_type = &"Grass"
+elevation_value = 0.8
+elevation_requirement = "number_is_equal_to"
+fallback = "greatest_number"
+force_spawn = true
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ouccu"]
+frequency = 0.0133
+
+[sub_resource type="Resource" id="Resource_i6ywb"]
+script = ExtResource("2_i6ywb")
+scene = ExtResource("4_ouccu")
+elevation_value = 0.15
+elevation_requirement = "number_is_greater_than"
+fallback = "greatest_number"
+use_noise_generation = true
+noise_generation = SubResource("FastNoiseLite_ouccu")
+noise_requirement = 0.3
+maximum_amount = 50
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t5ouc"]
+noise_type = 4
+frequency = 0.0411
+
+[sub_resource type="Resource" id="Resource_ouccu"]
+script = ExtResource("2_i6ywb")
+scene = ExtResource("5_tyse7")
+tile_type = &"Water"
+elevation_value = 0.4
+elevation_requirement = "number_is_less_than"
+fallback = "smallest_number"
+use_noise_generation = true
+noise_generation = SubResource("FastNoiseLite_t5ouc")
+noise_requirement = 0.2
+maximum_amount = 159
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogn4w"]
@@ -91,7 +129,7 @@ y_sort_enabled = true
 script = ExtResource("1_ofnxr")
 map_size = Vector2(150, 64)
 defualt_biome = &"Plains"
-items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tyse7")])
+items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tyse7"), SubResource("Resource_i6ywb"), SubResource("Resource_ouccu")])
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=1801103313]
 tile_set = SubResource("TileSet_esqlh")

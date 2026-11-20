@@ -20,6 +20,8 @@ class_name Zone
 @onready var terrain_tiles: TileMapLayer = $TerrainTiles
 ##Items that have been generated get added to the array
 var generated_items: Array
+var greatest_elevation_info:={"value":-999,"position":Vector2(0,0)}
+var lowest_elevation_info:={"value":999,"position":Vector2(0,0)}
 
 func _process(_delta: float) -> void:
 	var local_to_map=terrain_tiles.local_to_map(Globals.player.position)
@@ -50,23 +52,51 @@ func generate_terrain():
 				#Water generation
 					terrain_tiles.set_cell(Vector2i(x,y),0,Vector2i(3,0))
 func generate_post_terrain_items():
+	greatest_elevation_info={"value":-999,"position":Vector2(0,0)}
+	lowest_elevation_info={"value":999,"position":Vector2(0,0)}
+	
 	for i in items_to_be_generated.size():
-		var current_item=items_to_be_generated[i]
+		var current_item=items_to_be_generated[i-1]
+		if current_item.use_noise_generation:
+			current_item.noise_generation.seed=randi()
 		for x: int in map_size.x:
 			for y: int in map_size.y:
 				var elevation=noises["elevation"].get_noise_2d(x,y)
+
+				if greatest_elevation_info["value"]<elevation: #Greatest elevation tile
+					greatest_elevation_info["position"]=Vector2(x,y)
+					greatest_elevation_info["value"]=elevation
+				if lowest_elevation_info["value"]>elevation: #Lowest elevation tile
+					lowest_elevation_info["position"]=Vector2(x,y)
+					lowest_elevation_info["value"]=elevation
+				
 				var iterated_tile=terrain_tiles.get_cell_tile_data(Vector2i(x,y))
-				var elevation_requirement_call=Callable(Globals,current_item.elevation_requirement)
-				if elevation_requirement_call.call(elevation,current_item.elevation_value):
-					if generated_items.count(current_item)<current_item.maximum_amount:
-						generated_items.append(current_item)
-						var new_item=current_item.scene.instantiate()
-						new_item.position=Vector2(x,y)*32
-						add_child(new_item)
-		if generated_items.count(current_item)<current_item.minimum_amount:
-			print("minimum failed")
-		else:
-			print("minimum met")
+				var item_spawn_passed:=true
+				if current_item.use_noise_generation:
+					item_spawn_passed=current_item.noise_generation.get_noise_2d(x,y)>current_item.noise_requirement
+				if randi_range(0,current_item.not_spawn_chance)!=0:
+					item_spawn_passed=false
+				if iterated_tile.get_custom_data("Tile Type")!=current_item.tile_type:
+					item_spawn_passed=false
+				if item_spawn_passed:
+					var elevation_requirement_call=Callable(Globals,current_item.elevation_requirement)
+					if elevation_requirement_call.call(elevation,current_item.elevation_value):
+						if generated_items.count(current_item)<current_item.maximum_amount:
+							generated_items.append(current_item)
+							var new_item=current_item.scene.instantiate()
+							new_item.position=Vector2(x,y)*32
+							add_child(new_item)
+						
+		
+		if generated_items.count(current_item)<1 and current_item.force_spawn:
+			print("regular spawn failed")
+			if current_item.force_spawn:
+				var new_item=current_item.scene.instantiate()
+				generated_items.append(current_item)
+				match current_item.fallback:
+					"greatest_number": new_item.position=greatest_elevation_info["position"]*32
+					"smallest_number": new_item.position=lowest_elevation_info["position"]*32
+				add_child(new_item)
 func spawn_food(food,spawn_position):	
 	var new_food:Food=load("res://food/foods/"+str(food)+".tscn").instantiate()
 	new_food.position=spawn_position
@@ -92,5 +122,3 @@ func see_if_biome_requirement_met(biome_number:int,cell_x:int,cell_y:int):
 	if requirement.call(noises.moisture.get_noise_2d(cell_x,cell_y),given_biome.moisture_value):
 		requirments_met.append("moisture")
 	return requirments_met.has("temperature") and requirments_met.has("moisture")
-func get_tallest_tile(biome):
-	pass
