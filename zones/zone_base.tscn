@@ -11,7 +11,6 @@
 [sub_resource type="Resource" id="Resource_tyse7"]
 script = ExtResource("2_i6ywb")
 scene = ExtResource("3_ouccu")
-tile_type = &"Grass"
 elevation_value = 0.8
 elevation_requirement = "number_is_equal_to"
 fallback = "greatest_number"
@@ -40,7 +39,6 @@ frequency = 0.0411
 [sub_resource type="Resource" id="Resource_ouccu"]
 script = ExtResource("2_i6ywb")
 scene = ExtResource("5_tyse7")
-tile_type = &"Water"
 elevation_value = 0.4
 elevation_requirement = "number_is_less_than"
 fallback = "smallest_number"

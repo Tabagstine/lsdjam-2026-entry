@@ -7,9 +7,9 @@ class_name GeneratedItem
 ##What value the elevation should depend on
 @export_group("Terrain Information")
 ##Biome the item must be generated in, leave empty for any biome
-@export var biome: StringName
+@export var biome: StringName = "Any"
 ##Tile type the item must be generated on, leave empty for any tile
-@export var tile_type: StringName
+@export var tile_type: StringName = "Grass"
 @export_subgroup("Elevation Information")
 @export var elevation_value: float
 ##What the elevation value dictates

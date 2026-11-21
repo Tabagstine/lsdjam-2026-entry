@@ -78,6 +78,8 @@ func generate_post_terrain_items():
 					item_spawn_passed=false
 				if iterated_tile.get_custom_data("Tile Type")!=current_item.tile_type:
 					item_spawn_passed=false
+				if get_cell_biome(x,y)!=current_item.biome and current_item.biome!="Any":
+					item_spawn_passed=false
 				if item_spawn_passed:
 					var elevation_requirement_call=Callable(Globals,current_item.elevation_requirement)
 					if elevation_requirement_call.call(elevation,current_item.elevation_value):
