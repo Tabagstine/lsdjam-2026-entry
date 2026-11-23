@@ -76,7 +76,7 @@ func generate_post_terrain_items():
 					item_spawn_passed=current_item.noise_generation.get_noise_2d(x,y)>current_item.noise_requirement
 				if randi_range(0,current_item.not_spawn_chance)!=0:
 					item_spawn_passed=false
-				if iterated_tile.get_custom_data("Tile Type")!=current_item.tile_type:
+				if iterated_tile.get_custom_data("Tile Type")!=current_item.tile_type and current_item.tile_type!="Any":
 					item_spawn_passed=false
 				if get_cell_biome(x,y)!=current_item.biome and current_item.biome!="Any":
 					item_spawn_passed=false

@@ -2,6 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b7hfvkq31xel4" path="res://zones/zone_base.tscn" id="1_tetp2"]
 [ext_resource type="Script" uid="uid://cslbirejba6da" path="res://biome_resource.gd" id="2_k7yo4"]
+[ext_resource type="Script" uid="uid://c4ypnurmqycwc" path="res://generated_item.gd" id="3_fgku8"]
+[ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="4_g8qkk"]
+[ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="5_1ugwa"]
+[ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/foods/apple.tscn" id="5_ao7dq"]
+[ext_resource type="PackedScene" uid="uid://bymjuhgd6ey74" path="res://food/foods/kiwi.tscn" id="6_1ugwa"]
+[ext_resource type="Texture2D" uid="uid://bm8oehx1eenqa" path="res://zones/purple_land_tiles.png" id="7_g8qkk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i2n25"]
 noise_type = 3
@@ -39,6 +45,123 @@ temperature_value = 0.1499999999999999
 moisture_value = 0.05000000000000004
 metadata/_custom_type_script = "uid://cslbirejba6da"
 
+[sub_resource type="Resource" id="Resource_tyse7"]
+script = ExtResource("3_fgku8")
+scene = ExtResource("4_g8qkk")
+elevation_value = 0.8
+elevation_requirement = "number_is_greater_than"
+fallback = "greatest_number"
+force_spawn = true
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="Resource" id="Resource_1ugwa"]
+script = ExtResource("3_fgku8")
+scene = ExtResource("5_1ugwa")
+biome = &"Plains"
+tile_type = &"Grass"
+elevation_value = 0.2
+elevation_requirement = "number_is_greater_than"
+fallback = "smallest_number"
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ouccu"]
+frequency = 0.1621
+
+[sub_resource type="Resource" id="Resource_komur"]
+script = ExtResource("3_fgku8")
+scene = ExtResource("5_ao7dq")
+biome = &"Forest"
+elevation_value = 0.15
+elevation_requirement = "number_is_greater_than"
+fallback = "greatest_number"
+use_noise_generation = true
+noise_generation = SubResource("FastNoiseLite_ouccu")
+noise_requirement = 0.4
+maximum_amount = 20
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g8qkk"]
+frequency = 0.1621
+
+[sub_resource type="Resource" id="Resource_ao7dq"]
+script = ExtResource("3_fgku8")
+scene = ExtResource("6_1ugwa")
+biome = &"Plains"
+elevation_value = 0.15
+elevation_requirement = "number_is_greater_than"
+fallback = "greatest_number"
+use_noise_generation = true
+noise_generation = SubResource("FastNoiseLite_g8qkk")
+noise_requirement = 0.5
+maximum_amount = 50
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ao7dq"]
+texture = ExtResource("7_g8qkk")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/z_index = 3
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/0/terrains_peering_bit/top_left_corner = 0
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = "Grass"
+0:0/0/custom_data_1 = "Forest"
+1:0/0 = 0
+1:0/0/z_index = 2
+1:0/0/custom_data_0 = "Grass"
+1:0/0/custom_data_1 = "Plains"
+2:0/0 = 0
+2:0/0/z_index = 1
+2:0/0/terrain_set = 0
+2:0/0/terrain = 2
+2:0/0/terrains_peering_bit/right_side = 2
+2:0/0/terrains_peering_bit/bottom_right_corner = 2
+2:0/0/terrains_peering_bit/bottom_side = 2
+2:0/0/terrains_peering_bit/bottom_left_corner = 2
+2:0/0/terrains_peering_bit/left_side = 2
+2:0/0/terrains_peering_bit/top_left_corner = 2
+2:0/0/terrains_peering_bit/top_side = 2
+2:0/0/terrains_peering_bit/top_right_corner = 2
+2:0/0/custom_data_0 = "Sand"
+2:0/0/custom_data_1 = "General"
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 3
+3:0/0/terrains_peering_bit/right_side = 3
+3:0/0/terrains_peering_bit/bottom_right_corner = 3
+3:0/0/terrains_peering_bit/bottom_side = 3
+3:0/0/terrains_peering_bit/bottom_left_corner = 3
+3:0/0/terrains_peering_bit/left_side = 3
+3:0/0/terrains_peering_bit/top_left_corner = 3
+3:0/0/terrains_peering_bit/top_side = 3
+3:0/0/terrains_peering_bit/top_right_corner = 3
+3:0/0/custom_data_0 = "Water"
+3:0/0/custom_data_1 = "General"
+
+[sub_resource type="TileSet" id="TileSet_1ugwa"]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "ForestGrass"
+terrain_set_0/terrain_0/color = Color(0.25, 0.5, 0.3, 1)
+terrain_set_0/terrain_1/name = "NormalGrass"
+terrain_set_0/terrain_1/color = Color(0.5, 1, 0.5083333, 1)
+terrain_set_0/terrain_2/name = "Sand"
+terrain_set_0/terrain_2/color = Color(0.94166666, 1, 0.5, 1)
+terrain_set_0/terrain_3/name = "Water"
+terrain_set_0/terrain_3/color = Color(0.5, 0.9666666, 1, 1)
+custom_data_layer_0/name = "Tile Type"
+custom_data_layer_0/type = 4
+custom_data_layer_1/name = "Tile Biome"
+custom_data_layer_1/type = 4
+sources/0 = SubResource("TileSetAtlasSource_ao7dq")
+
 [node name="PurpleWorld" unique_id=1308950749 instance=ExtResource("1_tetp2")]
 sea_level = -0.04999999999999999
 noises = Dictionary[StringName, FastNoiseLite]({
@@ -47,3 +170,7 @@ noises = Dictionary[StringName, FastNoiseLite]({
 &"temperature": SubResource("FastNoiseLite_13bvk")
 })
 biomes = Array[ExtResource("2_k7yo4")]([SubResource("Resource_fgku8"), SubResource("Resource_g8qkk")])
+items_to_be_generated = Array[ExtResource("3_fgku8")]([SubResource("Resource_tyse7"), SubResource("Resource_1ugwa"), SubResource("Resource_komur"), SubResource("Resource_ao7dq")])
+
+[node name="TerrainTiles" parent="." index="0" unique_id=1801103313]
+tile_set = SubResource("TileSet_1ugwa")

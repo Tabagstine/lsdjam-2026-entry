@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="3_ofnxr"]
 [ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="3_ouccu"]
 [ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/foods/apple.tscn" id="4_ouccu"]
+[ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="4_t5ouc"]
 [ext_resource type="PackedScene" uid="uid://bymjuhgd6ey74" path="res://food/foods/kiwi.tscn" id="5_tyse7"]
 
 [sub_resource type="Resource" id="Resource_tyse7"]
@@ -17,35 +18,49 @@ fallback = "greatest_number"
 force_spawn = true
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
+[sub_resource type="Resource" id="Resource_g8qkk"]
+script = ExtResource("2_i6ywb")
+scene = ExtResource("4_t5ouc")
+tile_type = &"Grass"
+elevation_value = 0.3
+elevation_requirement = "number_is_less_than"
+fallback = "smallest_number"
+force_spawn = true
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ouccu"]
-frequency = 0.0133
+frequency = 0.1621
 
 [sub_resource type="Resource" id="Resource_i6ywb"]
 script = ExtResource("2_i6ywb")
 scene = ExtResource("4_ouccu")
+biome = &"Plains"
+tile_type = &"Grass"
 elevation_value = 0.15
 elevation_requirement = "number_is_greater_than"
 fallback = "greatest_number"
 use_noise_generation = true
 noise_generation = SubResource("FastNoiseLite_ouccu")
-noise_requirement = 0.3
+noise_requirement = 0.5
 maximum_amount = 50
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t5ouc"]
 noise_type = 4
-frequency = 0.0411
+frequency = 0.1751
 
 [sub_resource type="Resource" id="Resource_ouccu"]
 script = ExtResource("2_i6ywb")
 scene = ExtResource("5_tyse7")
+biome = &"Forest"
+tile_type = &"Grass"
 elevation_value = 0.4
 elevation_requirement = "number_is_less_than"
 fallback = "smallest_number"
 use_noise_generation = true
 noise_generation = SubResource("FastNoiseLite_t5ouc")
-noise_requirement = 0.2
-maximum_amount = 159
+noise_requirement = 0.4
+maximum_amount = 40
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogn4w"]
@@ -127,7 +142,7 @@ y_sort_enabled = true
 script = ExtResource("1_ofnxr")
 map_size = Vector2(150, 64)
 defualt_biome = &"Plains"
-items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tyse7"), SubResource("Resource_i6ywb"), SubResource("Resource_ouccu")])
+items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tyse7"), SubResource("Resource_g8qkk"), SubResource("Resource_i6ywb"), SubResource("Resource_ouccu")])
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=1801103313]
 tile_set = SubResource("TileSet_esqlh")
