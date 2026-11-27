@@ -17,6 +17,7 @@ var water_depth: float = 0.1
 var speed_multiplier: float = 1
 
 func _ready() -> void:
+	$Sprite.play("idle")
 	camera.limit_left=0
 	camera.limit_right=Globals.map_size.x*32
 	camera.limit_top=50

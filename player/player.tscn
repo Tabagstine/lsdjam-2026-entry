@@ -1,9 +1,32 @@
 [gd_scene format=3 uid="uid://lyaxnkodrwic"]
 
-[ext_resource type="Texture2D" uid="uid://ehim3sj5my32" path="res://placeholder/icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://bsxt1y8brpyya" path="res://player/player.gd" id="1_onrkg"]
-[ext_resource type="Material" uid="uid://c7gcek3cbmsbi" path="res://player/water_shader_material.tres" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://bvbdfwucf3jb3" path="res://player/stack.gd" id="3_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://tpxufqcghrny" path="res://player/player_idle.png" id="3_qjkh3"]
+[ext_resource type="Texture2D" uid="uid://ckfmtt4suhkmg" path="res://player/bowl_back.png" id="4_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://dadahjqeqw02p" path="res://player/bowl_front.png" id="6_boad6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = ExtResource("3_qjkh3")
+region = Rect2(0, 0, 65, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k8r"]
+atlas = ExtResource("3_qjkh3")
+region = Rect2(65, 0, 65, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k8r")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(26, 10.75)
@@ -13,41 +36,43 @@ script = ExtResource("1_onrkg")
 base_move_speed = 3300.0
 acceleration = 0.83
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=2125349833]
-modulate = Color(0.25333327, 0.19999999, 1, 1)
-material = ExtResource("2_yw30f")
-position = Vector2(0, -27)
-scale = Vector2(0.20312501, 0.4130209)
-texture = ExtResource("1_4flbx")
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1959475208]
+position = Vector2(0, -45)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"idle"
+frame_progress = 0.88219565
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1264285966]
-visible = false
 position = Vector2(0, -6.375)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="Bowl" type="Node2D" parent="." unique_id=740994939]
 position = Vector2(-19, -16)
 
-[node name="Sprite" type="Sprite2D" parent="Bowl" unique_id=875417230]
-modulate = Color(0.66, 0.37136, 0.11880001, 1)
-position = Vector2(0, -9.000004)
-scale = Vector2(0.328125, 0.12499999)
-texture = ExtResource("1_4flbx")
+[node name="BowlBack" type="Sprite2D" parent="Bowl" unique_id=1748403462]
+position = Vector2(-2, -19.500004)
+scale = Vector2(1, 1.124999)
+texture = ExtResource("4_g6k8r")
 
 [node name="Stack" type="Marker2D" parent="Bowl" unique_id=2124864887]
 process_mode = 3
 y_sort_enabled = true
-position = Vector2(0, -15)
+position = Vector2(0, -11)
 gizmo_extents = 5.0
 script = ExtResource("3_g1dw6")
 
+[node name="BowlFront" type="Sprite2D" parent="Bowl" unique_id=875417230]
+position = Vector2(0, -9.000004)
+texture = ExtResource("6_boad6")
+
 [node name="Camera" type="Camera2D" parent="." unique_id=2072152576]
 offset = Vector2(0, -50)
-zoom = Vector2(0.15, 0.15)
+zoom = Vector2(0.55, 0.55)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="Label" type="Label" parent="." unique_id=162718144]
+visible = false
 offset_left = -63.0
 offset_top = -78.0
 offset_right = 59.0

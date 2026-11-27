@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bw0naemlkmxnv" path="res://zones/zone_base.gd" id="1_ofnxr"]
 [ext_resource type="Script" uid="uid://c4ypnurmqycwc" path="res://generated_item.gd" id="2_i6ywb"]
 [ext_resource type="Texture2D" uid="uid://rlyv3wyn0tgb" path="res://zones/basic_tiles.png" id="3_i6ywb"]
-[ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="3_ofnxr"]
 [ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="3_ouccu"]
 [ext_resource type="PackedScene" uid="uid://qetrk6exq0d6" path="res://food/foods/apple.tscn" id="4_ouccu"]
 [ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="4_t5ouc"]
@@ -146,6 +145,3 @@ items_to_be_generated = Array[ExtResource("2_i6ywb")]([SubResource("Resource_tys
 
 [node name="TerrainTiles" type="TileMapLayer" parent="." unique_id=1801103313]
 tile_set = SubResource("TileSet_esqlh")
-
-[node name="Player" parent="." unique_id=45304273 instance=ExtResource("3_ofnxr")]
-position = Vector2(484, 197)

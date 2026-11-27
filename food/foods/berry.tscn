@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bqef6gi0jynl2"]
+
+[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base/food_base.tscn" id="1_nskef"]
+[ext_resource type="Texture2D" uid="uid://c0v02scfqk2kv" path="res://food/berry.png" id="2_iloin"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jllv2"]
+size = Vector2(10, 4)
+
+[node name="FoodBase" unique_id=1670747316 node_paths=PackedStringArray("stack_sprite") instance=ExtResource("1_nskef")]
+food_name = "berry"
+stack_sprite = NodePath("Sprite")
+
+[node name="Sprite" parent="." index="0" unique_id=2085850902]
+position = Vector2(0, -7)
+scale = Vector2(1, 1)
+texture = ExtResource("2_iloin")
+
+[node name="Collision" parent="." index="3" unique_id=310405033]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_jllv2")
