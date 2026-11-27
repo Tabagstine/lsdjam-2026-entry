@@ -13,11 +13,13 @@ func _process(_delta: float) -> void:
 		else:
 			inventory_shown=true
 	visible=inventory_shown
-	
+		
 	if get_tree().get_node_count_in_group("player")>0:
-		display_hovered_item()
-		if buttons_container.get_child_count()!=Globals.player.get_food_stack_dictionary().keys().size():
-			update_inventory() 
+		if inventory_shown:
+			display_hovered_item()
+			if buttons_container.get_child_count()!=Globals.player.get_food_stack_dictionary().keys().size():
+				print("inventory updated")
+				update_inventory() 
 func update_inventory():
 	for i in buttons_container.get_child_count():
 		buttons_container.get_child(i).queue_free()

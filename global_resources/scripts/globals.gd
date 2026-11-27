@@ -15,9 +15,6 @@ func _ready():
 func _process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("player")!=null:
 		player=get_tree().get_first_node_in_group("player")
-	else:
-		pass
-	
 	manage_pausing()
 	update_interactable_in_range()
 	if !get_tree().paused:

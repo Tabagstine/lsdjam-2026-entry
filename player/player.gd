@@ -24,6 +24,7 @@ func _ready() -> void:
 	camera.limit_bottom=Globals.map_size.y*32
 	
 func _physics_process(delta: float) -> void:
+	print(get_food_stack_dictionary())
 	$Label.text=str(get_stepped_tile_type())
 	speed_multiplier=1
 	if get_stepped_tile_type()=="Water":
@@ -48,11 +49,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 func get_food_stack_dictionary():
 	var food_stack_dictionary: Dictionary
-	for i in get_food_stack_array().size():
-		if food_stack_dictionary.has(get_food_stack_array()[i]):
-			food_stack_dictionary[get_food_stack_array()[i]]+=1
-		else:
-			food_stack_dictionary[get_food_stack_array()[i]]=1
+	for i in stack.get_children():
+		if i.is_in_group("stacked_ingredient"):
+			var name=i.food_name
+			if food_stack_dictionary.has(name):
+				food_stack_dictionary[name]+=1
+			else:
+				food_stack_dictionary[name]=1
 	return food_stack_dictionary
 func get_food_stack_array():
 	var food_stack: Array
