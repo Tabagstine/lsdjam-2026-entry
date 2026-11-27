@@ -4,10 +4,3 @@
 
 [node name="StackedIngredient" type="Node2D" unique_id=662860180 groups=["stacked_ingredient"]]
 script = ExtResource("1_wepfu")
-
-[node name="Label" type="Label" parent="." unique_id=222846263]
-visible = false
-offset_left = 27.0
-offset_top = -30.0
-offset_right = 67.0
-offset_bottom = -7.0
