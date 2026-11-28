@@ -1,71 +1,39 @@
 [gd_scene format=3 uid="uid://cmjopiud2qffc"]
 
-[ext_resource type="Script" uid="uid://cl28fsouc3ngs" path="res://interactables/berry_bush.gd" id="1_14kka"]
-[ext_resource type="Texture2D" uid="uid://t1h7aytu5rcn" path="res://interactables/bush.png" id="1_oih46"]
-[ext_resource type="Texture2D" uid="uid://c0v02scfqk2kv" path="res://food/berry.png" id="3_2kd4f"]
-[ext_resource type="Script" uid="uid://ijjfn4vlhiwq" path="res://global_resources/scripts/interactable_component.gd" id="3_owoar"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgrfb"]
-atlas = ExtResource("1_oih46")
-region = Rect2(0, 0, 117, 40)
+[ext_resource type="PackedScene" uid="uid://dl1o05y4317xv" path="res://interactables/harvestable_item_base.tscn" id="1_oih46"]
+[ext_resource type="Texture2D" uid="uid://t1h7aytu5rcn" path="res://interactables/bush.png" id="2_pgrfb"]
+[ext_resource type="PackedScene" uid="uid://bt32ra8sb1hs7" path="res://interactables/harvested_berry.tscn" id="3_14kka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14kka"]
-atlas = ExtResource("1_oih46")
+atlas = ExtResource("2_pgrfb")
+region = Rect2(0, 0, 117, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owoar"]
+atlas = ExtResource("2_pgrfb")
 region = Rect2(117, 0, 117, 40)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2kd4f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pgrfb")
+"texture": SubResource("AtlasTexture_14kka")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14kka")
+"texture": SubResource("AtlasTexture_owoar")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(82, 5)
+[node name="BerryBush" unique_id=1626917103 instance=ExtResource("1_oih46")]
 
-[node name="BerryBush" type="StaticBody2D" unique_id=167995338]
-script = ExtResource("1_14kka")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1743615682]
+[node name="Sprite" parent="." index="1" unique_id=1798752760]
 position = Vector2(0, -19)
-sprite_frames = SubResource("SpriteFrames_g4v7s")
-frame_progress = 0.48071012
+sprite_frames = SubResource("SpriteFrames_2kd4f")
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=1905022382]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_g4v7s")
+[node name="HarvestedBerry" parent="Items" parent_id_path=PackedInt32Array(951822080) index="0" unique_id=1969194803 instance=ExtResource("3_14kka")]
+position = Vector2(-22, -13)
 
-[node name="Berries" type="Node2D" parent="." unique_id=441540243]
-
-[node name="Berry1" type="Sprite2D" parent="Berries" unique_id=1535821471]
-position = Vector2(-26, -14)
-texture = ExtResource("3_2kd4f")
-
-[node name="Berry2" type="Sprite2D" parent="Berries" unique_id=1423999487]
-position = Vector2(1, -28)
-texture = ExtResource("3_2kd4f")
-
-[node name="Berry3" type="Sprite2D" parent="Berries" unique_id=1164392169]
-position = Vector2(27, -15)
-texture = ExtResource("3_2kd4f")
-
-[node name="InteractableComponent" type="Node" parent="." unique_id=1802506201 node_paths=PackedStringArray("body", "interaction_visual")]
-script = ExtResource("3_owoar")
-body = NodePath("..")
-interaction_range = 60.0
-interaction_visual = NodePath("../Interaction")
-metadata/_custom_type_script = "uid://ijjfn4vlhiwq"
-
-[node name="Interaction" type="Label" parent="." unique_id=2097866635]
-offset_left = -48.0
-offset_top = -61.0
-offset_right = 47.0
-offset_bottom = -38.0
-text = "E to Interact"
+[node name="HarvestedBerry2" parent="Items" parent_id_path=PackedInt32Array(951822080) index="1" unique_id=1009965471 instance=ExtResource("3_14kka")]
+position = Vector2(14, -23)

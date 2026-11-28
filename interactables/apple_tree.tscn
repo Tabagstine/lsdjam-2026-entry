@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://d2635vb5cifq3"]
+
+[ext_resource type="PackedScene" uid="uid://dl1o05y4317xv" path="res://interactables/harvestable_item_base.tscn" id="1_orxha"]
+[ext_resource type="Texture2D" uid="uid://c7b03sd5ep84l" path="res://interactables/tree.png" id="2_d1840"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e76o"]
+size = Vector2(24, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh8bh"]
+atlas = ExtResource("2_d1840")
+region = Rect2(0, 0, 130, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h63p"]
+atlas = ExtResource("2_d1840")
+region = Rect2(130, 0, 130, 184)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_be4um"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh8bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h63p")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AppleTree" unique_id=1626917103 instance=ExtResource("1_orxha")]
+sway_amount = 8.0
+sway_speed = 12.0
+
+[node name="Collision" parent="StaticBody2D" parent_id_path=PackedInt32Array(2109051344) index="0" unique_id=1036207639]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_1e76o")
+
+[node name="Sprite" parent="." index="1" unique_id=1798752760]
+position = Vector2(4, -86)
+sprite_frames = SubResource("SpriteFrames_be4um")
+frame_progress = 0.3447306

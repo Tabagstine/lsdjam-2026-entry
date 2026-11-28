@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b5v053wvshh5w"]
+
+[ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base/food_base.tscn" id="1_0h5k2"]
+[ext_resource type="Texture2D" uid="uid://b2x7qi0vko0mj" path="res://food/textures/berry_juice.png" id="2_uoths"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fsn4"]
+size = Vector2(22, 7)
+
+[node name="BerryJuice" unique_id=1670747316 node_paths=PackedStringArray("stack_sprite") instance=ExtResource("1_0h5k2")]
+food_name = "berry_juice"
+inventory_texture = ExtResource("2_uoths")
+stack_sprite = NodePath("Sprite")
+
+[node name="Sprite" parent="." index="0" unique_id=2085850902]
+position = Vector2(-1, -24)
+scale = Vector2(1, 1)
+texture = ExtResource("2_uoths")
+
+[node name="Label" parent="." index="1" unique_id=1723847955]
+offset_top = -72.0
+offset_bottom = -49.0
+
+[node name="Collision" parent="." index="3" unique_id=310405033]
+position = Vector2(1, -3.5)
+shape = SubResource("RectangleShape2D_0fsn4")

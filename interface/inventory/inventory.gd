@@ -26,7 +26,7 @@ func update_inventory():
 	if Globals.player.get_food_stack_array().size()>0:
 		for i in Globals.player.get_food_stack_dictionary().keys().size():
 			var new_inventory_button: InventoryButton = inventory_button.instantiate()
-			var button_texture=Globals.get_food(Globals.player.get_food_stack_dictionary().keys()[i]).stack_sprite.texture
+			var button_texture=Globals.get_food(Globals.player.get_food_stack_dictionary().keys()[i]).inventory_texture
 			new_inventory_button.texture_normal=button_texture
 			new_inventory_button.modulate=Globals.get_food(Globals.player.get_food_stack_dictionary().keys()[i]).stack_sprite.modulate
 			new_inventory_button.food_name=Globals.player.get_food_stack_dictionary().keys()[i]

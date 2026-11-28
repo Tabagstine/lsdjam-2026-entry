@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://lyaxnkodrwic" path="res://player/player.tscn" id="4_1ugwa"]
 [ext_resource type="PackedScene" uid="uid://l5wj15ypwfhv" path="res://kitchen/kitchen_counter.tscn" id="4_g8qkk"]
 [ext_resource type="PackedScene" uid="uid://brfrwlwo4clc" path="res://monster/monster.tscn" id="5_1ugwa"]
-[ext_resource type="PackedScene" uid="uid://bymjuhgd6ey74" path="res://food/foods/kiwi.tscn" id="6_1ugwa"]
 [ext_resource type="PackedScene" uid="uid://cmjopiud2qffc" path="res://interactables/berry_bush.tscn" id="6_ao7dq"]
 [ext_resource type="Texture2D" uid="uid://bm8oehx1eenqa" path="res://zones/purple_land_tiles.png" id="7_g8qkk"]
+[ext_resource type="PackedScene" uid="uid://d2635vb5cifq3" path="res://interactables/apple_tree.tscn" id="8_1ugwa"]
+[ext_resource type="PackedScene" uid="uid://bqef6gi0jynl2" path="res://food/foods/berry.tscn" id="9_komur"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i2n25"]
 noise_type = 3
@@ -88,24 +89,36 @@ elevation_requirement = "number_is_greater_than"
 fallback = "greatest_number"
 use_noise_generation = true
 noise_generation = SubResource("FastNoiseLite_ouccu")
-noise_requirement = 0.5
-maximum_amount = 20
+noise_requirement = 0.53
+maximum_amount = 40
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g8qkk"]
-frequency = 0.1621
+frequency = 0.2482
 
 [sub_resource type="Resource" id="Resource_ao7dq"]
 script = ExtResource("3_fgku8")
-scene = ExtResource("6_1ugwa")
-biome = &"Plains"
-elevation_value = 0.15
-elevation_requirement = "number_is_greater_than"
+scene = ExtResource("8_1ugwa")
+biome = &"Forest"
+tile_type = &"Grass"
+elevation_value = 0.2
+elevation_requirement = "number_is_less_than"
 fallback = "greatest_number"
 use_noise_generation = true
 noise_generation = SubResource("FastNoiseLite_g8qkk")
-noise_requirement = 0.5
-maximum_amount = 50
+noise_requirement = 0.4
+maximum_amount = 60
+metadata/_custom_type_script = "uid://c4ypnurmqycwc"
+
+[sub_resource type="Resource" id="Resource_7fxrw"]
+script = ExtResource("3_fgku8")
+scene = ExtResource("9_komur")
+biome = &"Forest"
+elevation_value = 0.3
+elevation_requirement = "number_is_less_than"
+fallback = "smallest_number"
+maximum_amount = 400
+not_spawn_chance = 25
 metadata/_custom_type_script = "uid://c4ypnurmqycwc"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ao7dq"]
@@ -182,7 +195,7 @@ noises = Dictionary[StringName, FastNoiseLite]({
 &"temperature": SubResource("FastNoiseLite_13bvk")
 })
 biomes = Array[ExtResource("2_k7yo4")]([SubResource("Resource_fgku8"), SubResource("Resource_g8qkk")])
-items_to_be_generated = Array[ExtResource("3_fgku8")]([SubResource("Resource_tyse7"), SubResource("Resource_b1jvu"), SubResource("Resource_1ugwa"), SubResource("Resource_komur"), SubResource("Resource_ao7dq")])
+items_to_be_generated = Array[ExtResource("3_fgku8")]([SubResource("Resource_tyse7"), SubResource("Resource_b1jvu"), SubResource("Resource_1ugwa"), SubResource("Resource_komur"), SubResource("Resource_ao7dq"), SubResource("Resource_7fxrw")])
 
 [node name="TerrainTiles" parent="." index="0" unique_id=1801103313]
 tile_set = SubResource("TileSet_1ugwa")

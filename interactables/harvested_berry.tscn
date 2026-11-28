@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bt32ra8sb1hs7"]
+
+[ext_resource type="PackedScene" uid="uid://dti6fnccy2qff" path="res://interactables/harvested_item_base.tscn" id="1_apvul"]
+[ext_resource type="Texture2D" uid="uid://vs8bo2ufe13r" path="res://food/textures/berry.png" id="2_dsox6"]
+
+[node name="HarvestedBerry" unique_id=1969194803 instance=ExtResource("1_apvul")]
+product = &"berry"
+
+[node name="Sprite" parent="." index="0" unique_id=851418521]
+texture = ExtResource("2_dsox6")

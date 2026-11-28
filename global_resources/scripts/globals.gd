@@ -11,6 +11,7 @@ var player: Player
 func _ready():
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	add_recipe("failed"); add_recipe("fruit_salad"); add_recipe("kiwis");
+	add_recipe("berry_juice");
 	add_user_signal("update_interactables_in_range")
 func _process(delta: float) -> void:
 	if get_tree().get_first_node_in_group("player")!=null:

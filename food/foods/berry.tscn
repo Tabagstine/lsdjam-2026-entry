@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://bqef6gi0jynl2"]
 
 [ext_resource type="PackedScene" uid="uid://ccct1p00ptxd" path="res://food/food_base/food_base.tscn" id="1_nskef"]
-[ext_resource type="Texture2D" uid="uid://c0v02scfqk2kv" path="res://food/berry.png" id="2_iloin"]
+[ext_resource type="Texture2D" uid="uid://c02u2j2en1186" path="res://interface/inventory/inventory_icons/berry_icon.png" id="2_lvl8w"]
+[ext_resource type="Texture2D" uid="uid://vs8bo2ufe13r" path="res://food/textures/berry.png" id="3_iloin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jllv2"]
 size = Vector2(10, 4)
 
 [node name="FoodBase" unique_id=1670747316 node_paths=PackedStringArray("stack_sprite") instance=ExtResource("1_nskef")]
 food_name = "berry"
+inventory_texture = ExtResource("2_lvl8w")
 stack_sprite = NodePath("Sprite")
 
 [node name="Sprite" parent="." index="0" unique_id=2085850902]
 position = Vector2(0, -7)
 scale = Vector2(1, 1)
-texture = ExtResource("2_iloin")
+texture = ExtResource("3_iloin")
 
 [node name="Collision" parent="." index="3" unique_id=310405033]
 position = Vector2(0, -2)

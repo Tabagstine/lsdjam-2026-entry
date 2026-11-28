@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Food
 
 @export var food_name: String = "food_name"
+@export var inventory_texture: Texture = preload("res://placeholder/icon.svg")
 @export var stack_sprite: Sprite2D
 @export var weight: float = 1
 

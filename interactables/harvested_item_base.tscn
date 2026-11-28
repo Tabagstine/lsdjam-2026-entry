@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dti6fnccy2qff"]
+
+[ext_resource type="Script" uid="uid://ya2gmh2y0vng" path="res://interactables/harvested_item_base.gd" id="1_u5pqu"]
+
+[node name="HarvestedItemBase" type="Node2D" unique_id=1969194803]
+script = ExtResource("1_u5pqu")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=851418521]
